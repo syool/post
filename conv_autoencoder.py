@@ -10,33 +10,33 @@ from torchvision import datasets, transforms
 
 import matplotlib.pyplot as plt
 
-#Converting data to torch.FloatTensor
+# converting data to torch.FloatTensor
 transform = transforms.ToTensor()
 
-# Download the training and test datasets
+# download the training and test datasets
 train_data = datasets.CIFAR10(root='data', train=True, download=False, transform=transform)
 
 test_data = datasets.CIFAR10(root='data', train=False, download=False, transform=transform)
 
-#Prepare data loaders
+# prepare data loaders
 train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, num_workers=0)
 test_loader = torch.utils.data.DataLoader(test_data, batch_size=32, num_workers=0)
 
 
-#Utility functions to un-normalize and display an image
+# utility functions to un-normalize and display an image
 def imshow(img):
     img = img / 2 + 0.5  
     plt.imshow(np.transpose(img, (1, 2, 0))) 
 
-#Define the image classes
+# define the image classes
 classes = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
-#Obtain one batch of training images
+# obtain one batch of training images
 dataiter = iter(train_loader)
 images, labels = dataiter.next()
 images = images.numpy()
 
-#Plot the images
+# plot the images
 fig = plt.figure(figsize=(8, 8))
 # display 20 images
 for idx in np.arange(9):
@@ -46,17 +46,17 @@ for idx in np.arange(9):
 
 plt.show()
 
-#Define the Convolutional Autoencoder
+# define the Convolutional Autoencoder
 class ConvAutoencoder(nn.Module):
     def __init__(self):
         super(ConvAutoencoder, self).__init__()
        
-        #Encoder
+        # ENCODER #
         self.conv1 = nn.Conv2d(3, 16, 3, padding=1)  
         self.conv2 = nn.Conv2d(16, 4, 3, padding=1)
         self.pool = nn.MaxPool2d(2, 2)
        
-        #Decoder
+        # DECODER #
         self.t_conv1 = nn.ConvTranspose2d(4, 16, 2, stride=2)
         self.t_conv2 = nn.ConvTranspose2d(16, 3, 2, stride=2)
 
@@ -72,23 +72,23 @@ class ConvAutoencoder(nn.Module):
         return x
 
 
-#Instantiate the model
+# initialize the model
 model = ConvAutoencoder().cuda()
 
-#Loss function
+# loss function
 criterion = nn.BCELoss()
 
-#Optimizer
+# optimizer
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-#Epochs
+# epochs
 n_epochs = 20
 
 for epoch in range(1, n_epochs+1):
     # monitor training loss
     train_loss = 0.0
 
-    #Training
+    # training
     for data in train_loader:
         images, _ = data
         images = images.cuda()
@@ -103,19 +103,19 @@ for epoch in range(1, n_epochs+1):
     print('Epoch: {} \tTraining Loss: {:.6f}'.format(epoch, train_loss))
 
 
-#Batch of test images
+# batch of test images
 dataiter = iter(test_loader)
 images, labels = dataiter.next()
 images, labels = images.cuda(), labels.cuda()
 
-#Sample outputs
+# sample outputs
 output = model(images)
 images = images.cpu().numpy()
 
 output = output.view(32, 3, 32, 32)
 output = output.detach().cpu().numpy()
 
-#Original Images
+# original images
 fig, axes = plt.subplots(nrows=1, ncols=5, sharex=True, sharey=True, figsize=(12,4))
 for idx in np.arange(5):
     ax = fig.add_subplot(1, 5, idx+1, xticks=[], yticks=[])
@@ -123,7 +123,7 @@ for idx in np.arange(5):
     ax.set_title(classes[labels[idx]])
 plt.show()
 
-#Reconstructed Images
+# reconstructed images
 fig, axes = plt.subplots(nrows=1, ncols=5, sharex=True, sharey=True, figsize=(12,4))
 for idx in np.arange(5):
     ax = fig.add_subplot(1, 5, idx+1, xticks=[], yticks=[])
