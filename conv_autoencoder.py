@@ -15,12 +15,13 @@ transform = transforms.ToTensor()
 
 # download the training and test datasets
 train_data = datasets.CIFAR10(root='data', train=True, download=False, transform=transform)
-
 test_data = datasets.CIFAR10(root='data', train=False, download=False, transform=transform)
 
+batch_size = 32
+
 # prepare data loaders
-train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, num_workers=0)
-test_loader = torch.utils.data.DataLoader(test_data, batch_size=32, num_workers=0)
+train_loader = torch.utils.data.DataLoader(train_data, batch_size=batch_size, num_workers=0)
+test_loader = torch.utils.data.DataLoader(test_data, batch_size=batch_size, num_workers=0)
 
 
 # utility functions to un-normalize and display an image
@@ -112,7 +113,7 @@ images, labels = images.cuda(), labels.cuda()
 output = model(images)
 images = images.cpu().numpy()
 
-output = output.view(32, 3, 32, 32)
+output = output.view(batch_size, 3, 32, 32)
 output = output.detach().cpu().numpy()
 
 # original images
