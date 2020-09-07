@@ -9,8 +9,6 @@ from torchvision import transforms
 from torchvision.datasets import MNIST
 from torchvision.utils import save_image
 
-torch.cuda.set_device() # gpu setting
-
 if not os.path.exists('./mlp_img'):
     os.mkdir('./mlp_img')
 
