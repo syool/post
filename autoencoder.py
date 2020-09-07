@@ -9,6 +9,8 @@ from torchvision import transforms
 from torchvision.datasets import MNIST
 from torchvision.utils import save_image
 
+torch.cuda.set_device() # gpu setting
+
 if not os.path.exists('./mlp_img'):
     os.mkdir('./mlp_img')
 
@@ -74,7 +76,7 @@ for epoch in range(num_epochs):
         optimizer.step()
     # ===================log========================
     print('epoch [{}/{}], loss:{:.4f}'
-          .format(epoch + 1, num_epochs, loss.data[0]))
+          .format(epoch + 1, num_epochs, loss.data))
     if epoch % 10 == 0:
         pic = to_img(output.cpu().data)
         save_image(pic, './mlp_img/image_{}.png'.format(epoch))
