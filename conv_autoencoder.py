@@ -82,7 +82,7 @@ criterion = nn.BCELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 #Epochs
-n_epochs = 50
+n_epochs = 20
 
 for epoch in range(1, n_epochs+1):
     # monitor training loss
