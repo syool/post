@@ -188,9 +188,9 @@ for epoch in range(niter):
         #save the output
         if i % 100 == 0:
             print('saving the output')
-            vutils.save_image(real_cpu,'./output/real_samples.png',normalize=True)
+            vutils.save_image(real_cpu,'/home/austin/Documents/Outputs/dcgan/real_samples.png',normalize=True)
             fake = netG(fixed_noise)
-            vutils.save_image(fake.detach(),'./output/fake_samples_epoch_%03d.png' % (epoch),normalize=True)
+            vutils.save_image(fake.detach(),'/home/austin/Documents/Outputs/dcgan/fake_samples_epoch_%03d.png' % (epoch),normalize=True)
     
     # Check pointing for every epoch
-    torch.save(netG.state_dict(), './weights/netG_epoch_%d.pth' % (epoch))
+    torch.save(netG.state_dict(), '/home/austin/Documents/Outputs/dcgan/netG_epoch_%d.pth' % (epoch))
