@@ -12,6 +12,7 @@ from torch.autograd import Variable
 
 import torch.nn as nn
 import torch.nn.functional as F
+# import torch.backends.cudnn as cudnn
 import torch
 
 os.makedirs("images", exist_ok=True)
@@ -33,7 +34,7 @@ print(opt)
 img_shape = (opt.channels, opt.img_size, opt.img_size)
 
 cuda = True if torch.cuda.is_available() else False
-
+# cudnn.benchmark = True
 
 class Generator(nn.Module):
     def __init__(self):
