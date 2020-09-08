@@ -14,8 +14,8 @@ import matplotlib.pyplot as plt
 transform = transforms.ToTensor()
 
 # download the training and test datasets
-train_data = datasets.CIFAR10(root='data', train=True, download=False, transform=transform)
-test_data = datasets.CIFAR10(root='data', train=False, download=False, transform=transform)
+train_data = datasets.CIFAR10(root='/home/austin/Documents/Datasets/CIFAR10', train=True, download=False, transform=transform)
+test_data = datasets.CIFAR10(root='/home/austin/Documents/Datasets/CIFAR10', train=False, download=False, transform=transform)
 
 batch_size = 32
 
