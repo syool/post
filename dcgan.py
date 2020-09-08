@@ -20,7 +20,7 @@ random.seed(manualSeed)
 torch.manual_seed(manualSeed)
 
 #loading the dataset
-dataset = dset.CIFAR10(root="./data", download=True,
+dataset = dset.CIFAR10(root="/home/austin/Documents/Datasets/CIFAR10", download=False,
                            transform=transforms.Compose([
                                transforms.Resize(64),
                                transforms.ToTensor(),
@@ -188,9 +188,9 @@ for epoch in range(niter):
         #save the output
         if i % 100 == 0:
             print('saving the output')
-            vutils.save_image(real_cpu,'output/real_samples.png',normalize=True)
+            vutils.save_image(real_cpu,'./output/real_samples.png',normalize=True)
             fake = netG(fixed_noise)
-            vutils.save_image(fake.detach(),'output/fake_samples_epoch_%03d.png' % (epoch),normalize=True)
+            vutils.save_image(fake.detach(),'./output/fake_samples_epoch_%03d.png' % (epoch),normalize=True)
     
     # Check pointing for every epoch
-    torch.save(netG.state_dict(), 'weights/netG_epoch_%d.pth' % (epoch))
+    torch.save(netG.state_dict(), './weights/netG_epoch_%d.pth' % (epoch))
