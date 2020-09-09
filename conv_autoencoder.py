@@ -20,8 +20,8 @@ test_data = datasets.CIFAR10(root='/home/austin/Documents/Datasets/CIFAR10', tra
 batch_size = 32
 
 # prepare data loaders
-train_loader = torch.utils.data.DataLoader(train_data, batch_size=batch_size, num_workers=0)
-test_loader = torch.utils.data.DataLoader(test_data, batch_size=batch_size, num_workers=0)
+train_loader = torch.utils.data.DataLoader(train_data, batch_size=batch_size, num_workers=2)
+test_loader = torch.utils.data.DataLoader(test_data, batch_size=batch_size, num_workers=2)
 
 
 # utility functions to un-normalize and display an image

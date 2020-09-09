@@ -107,6 +107,8 @@ dataloader = torch.utils.data.DataLoader(
     ),
     batch_size=opt.batch_size,
     shuffle=True,
+    num_workers=16,
+    pin_memory=True
 )
 
 # Optimizers

@@ -3,7 +3,6 @@ import os
 import random
 import torch
 import torch.nn as nn
-import torch.nn.parallel
 import torch.backends.cudnn as cudnn
 import torch.optim as optim
 import torch.utils.data
@@ -81,7 +80,7 @@ class Generator(nn.Module):
 
     def forward(self, input):
         if input.is_cuda and self.ngpu > 1:
-            output = nn.parallel.data_parallel(self.main, input, range(self.ngpu))
+            output = nn.DataParallel(self.main, input, range(self.ngpu))
         else:
             output = self.main(input)
             return output
@@ -119,7 +118,7 @@ class Discriminator(nn.Module):
 
     def forward(self, input):
         if input.is_cuda and self.ngpu > 1:
-            output = nn.parallel.data_parallel(self.main, input, range(self.ngpu))
+            output = nn.DataParallel(self.main, input, range(self.ngpu))
         else:
             output = self.main(input)
 
