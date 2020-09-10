@@ -28,7 +28,7 @@ dataset = dset.CIFAR10(root="/home/austin/Documents/Datasets/CIFAR10", download=
 nc=3
 
 dataloader = torch.utils.data.DataLoader(dataset, batch_size=128,
-                                         shuffle=True, num_workers=2)
+                                         shuffle=True, num_workers=8)
 
 #checking the availability of cuda devices
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
