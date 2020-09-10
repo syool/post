@@ -10,10 +10,10 @@ from torch.utils.data import DataLoader
 from torchvision import datasets
 from torch.autograd import Variable
 
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 # import torch.backends.cudnn as cudnn
-import torch
 
 os.makedirs("/home/austin/Documents/Outputs/gan", exist_ok=True)
 

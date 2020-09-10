@@ -10,14 +10,13 @@ from torch.utils.data import DataLoader
 from torchvision import datasets
 from torch.autograd import Variable
 
-import torch.nn as nn
-import torch.nn.functional as F
 import torch
-
-os.makedirs("/home/austin/Documents/Outputs/gan", exist_ok=True)
+import torch.nn as nn
+# import torch.nn.functional as F
+# import torch.backends.cudnn as cudnn
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--n_epochs", type=int, default=200, help="number of epochs of training")
+parser.add_argument("--n_epochs", type=int, default=100, help="number of epochs of training")
 parser.add_argument("--batch_size", type=int, default=128, help="size of the batches")
 parser.add_argument("--lr", type=float, default=0.0002, help="adam: learning rate")
 parser.add_argument("--b1", type=float, default=0.5, help="adam: decay of first order momentum of gradient")
@@ -31,9 +30,11 @@ opt = parser.parse_args()
 print(opt)
 
 cuda = True if torch.cuda.is_available() else False
+# cudnn.benchmark = True
 
 # Configure data loader
-# os.makedirs("/home/austin/Documents/Datasets/", exist_ok=True)
+# os.makedirs("/home/austin/Documents/Datasets", exist_ok=True)
+# os.makedirs("/home/austin/Documents/Outputs/dcgan", exist_ok=True)
 dataloader = torch.utils.data.DataLoader(
     datasets.CIFAR10(
         "/home/austin/Documents/Datasets/CIFAR10",
@@ -189,4 +190,4 @@ for epoch in range(opt.n_epochs):
 
         batches_done = epoch * len(dataloader) + i
         if batches_done % opt.sample_interval == 0:
-            save_image(gen_imgs.data[:25], "/home/austin/Documents/Outputs/gan/%d.png" % batches_done, nrow=5, normalize=True)
+            save_image(gen_imgs.data[:25], "/home/austin/Documents/Outputs/dcgan/%d.png" % batches_done, nrow=5, normalize=True)
