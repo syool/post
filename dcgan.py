@@ -17,7 +17,7 @@ import torch.nn as nn
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--n_epochs", type=int, default=200, help="number of epochs of training")
-parser.add_argument("--batch_size", type=int, default=128, help="size of the batches")
+parser.add_argument("--batch_size", type=int, default=64, help="size of the batches")
 parser.add_argument("--lr", type=float, default=0.0002, help="adam: learning rate")
 parser.add_argument("--b1", type=float, default=0.5, help="adam: decay of first order momentum of gradient")
 parser.add_argument("--b2", type=float, default=0.999, help="adam: decay of first order momentum of gradient")
@@ -193,5 +193,5 @@ for epoch in range(opt.n_epochs):
             save_image(gen_imgs.data[:25], "/home/austin/Documents/Outputs/dcgan/%d.png" % batches_done, nrow=5, normalize=True)
 
 
-torch.save(generator.state_dict(), '/home/austin/Documents/Outputs/dcgan_g')
-torch.save(discriminator.state_dict(), '/home/austin/Documents/Outputs/dcgan_d')
+torch.save(generator.state_dict(), '/home/austin/Documents/Outputs/dcgan_g.pth')
+torch.save(discriminator.state_dict(), '/home/austin/Documents/Outputs/dcgan_d.pth')
