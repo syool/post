@@ -37,7 +37,7 @@ cuda = True if torch.cuda.is_available() else False
 # os.makedirs("/home/austin/Documents/Outputs/dcgan", exist_ok=True)
 dataloader = torch.utils.data.DataLoader(
     datasets.CIFAR10(
-        "/home/austin/Documents/Datasets/CIFAR10",
+        "/home/user/Documents/Datasets/CIFAR10",
         train=True,
         download=True,
         transform=transforms.Compose(
@@ -190,8 +190,8 @@ for epoch in range(opt.n_epochs):
 
         batches_done = epoch * len(dataloader) + i
         if batches_done % opt.sample_interval == 0:
-            save_image(gen_imgs.data[:25], "/home/austin/Documents/Outputs/dcgan/%d.png" % batches_done, nrow=5, normalize=True)
+            save_image(gen_imgs.data[:25], "/home/user/Documents/Outputs/dcgan/%d.png" % batches_done, nrow=5, normalize=True)
 
 
-torch.save(generator.state_dict(), '/home/austin/Documents/Outputs/dcgan_g.pth')
-torch.save(discriminator.state_dict(), '/home/austin/Documents/Outputs/dcgan_d.pth')
+torch.save(generator.state_dict(), '/home/user/Documents/Outputs/dcgan_g.pth')
+torch.save(discriminator.state_dict(), '/home/user/Documents/Outputs/dcgan_d.pth')
