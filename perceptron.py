@@ -18,7 +18,9 @@ or_Y = or_op[0:4, 2:] # labeled data
 
 # parameters
 w = np.random.randn(1, 2)
-b = np.random.randn()
+b = 1
+
+learning_rate = 0.1
 
 # activation function
 def step_function(x):
@@ -38,3 +40,8 @@ for repeat in range(epoch):
         print(step_function(tmp[i]))
 
 print(and_Y)
+
+print(w[0][0])
+print(y[0])
+w[0][0] = w[0][0] + learning_rate * (y[0] - and_Y[0]) * and_x[0][0]
+print(w[0][0])
