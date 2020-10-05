@@ -41,7 +41,3 @@ for repeat in range(epoch):
 
 print(and_Y)
 
-print(w[0][0])
-print(y[0])
-w[0][0] = w[0][0] + learning_rate * (y[0] - and_Y[0]) * and_x[0][0]
-print(w[0][0])
