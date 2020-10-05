@@ -18,7 +18,8 @@ or_Y = or_op[0:4, 2:] # labeled data
 
 # parameters
 w = np.random.randn(1, 2)
-b = 1
+
+print("w:", w)
 
 learning_rate = 0.1
 
@@ -34,10 +35,10 @@ for repeat in range(epoch):
     for i in range(len(and_op)):
         p1 = and_x[i][0] * w[0][0]
         p2 = and_x[i][1] * w[0][1]
-        tmp.append(p1 + p2 + b)
+        tmp.append(p1 + p2)
         y.append(step_function(tmp[i]))
-        
-        print(step_function(tmp[i]))
 
+print(y)
 print(and_Y)
 
+# w[][] = w[] + learning_rate * (y[] - and_Y[]) * x[]
