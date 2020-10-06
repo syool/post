@@ -1,7 +1,5 @@
 import numpy as np
 
-a = np.array([])
+a = [1, 2]
 
-np.hstack(a, np.array[1])
-
-print(a)
+print(a[1:])

@@ -1,44 +1,58 @@
 import numpy as np
 
-# AND Operation
-and_op = np.array([[0, 0, 0],
-                   [0, 1, 0],
-                   [1, 0, 0],
-                   [1, 1, 1]])
-and_x = and_op[0:4, :-1] # input data
-and_Y = and_op[0:4, 2:] # labeled data
+class Perceptron(object):
 
-# OR Operation
-or_op = np.array([[0, 0, 0],
-                  [0, 1, 1],
-                  [1, 0, 1],
-                  [1, 1, 1]])
-or_x = or_op[0:4, :-1] # input data
-or_Y = or_op[0:4, 2:] # labeled data
+    def __init__(self, no_of_inputs, iteration=10, learning_rate=0.01):
+        self.iter = iteration
+        self.learning_rate = learning_rate
+        self.weights = np.zeros(no_of_inputs + 1) # weights + bias
+           
+    def predict(self, inputs):
+        summation = np.dot(inputs, self.weights[1:]) + self.weights[0] # weights[0] are biases
+        if summation > 0:
+          activation = 1
+        else:
+          activation = 0            
+        return activation
 
-# parameters
-w = np.random.randn(1, 2)
+    def train(self, training_inputs, labels):
+        for i in range(self.iter):
+            for inputs, label in zip(training_inputs, labels):
+                prediction = self.predict(inputs)
+                self.weights[1:] += self.learning_rate * (label - prediction) * inputs
+                self.weights[0] += self.learning_rate * (label - prediction)
+            print('iteration {}: {}'.format(i+1, self.weights))
 
-print("w:", w)
 
-learning_rate = 0.1
+training_inputs = []
+for i in range(2):
+    for j in range(2):
+        training_inputs.append(np.array([i, j]))
 
-# activation function
-def step_function(x):
-    x = 0 if x <= 0 else 1
-    return x
 
-# perceptron
-epoch = 10
-tmp, y = [], []
-for repeat in range(epoch):
-    for i in range(len(and_op)):
-        p1 = and_x[i][0] * w[0][0]
-        p2 = and_x[i][1] * w[0][1]
-        tmp.append(p1 + p2)
-        y.append(step_function(tmp[i]))
+# ===== training 1: AND operation =====
+print('Training data: ', training_inputs)
+labels = np.array([0, 0, 0, 1])
 
-print(y)
-print(and_Y)
+perceptron = Perceptron(2)
+perceptron.train(training_inputs, labels)
 
-# w[][] = w[] + learning_rate * (y[] - and_Y[]) * x[]
+# prediction
+for i in range(2):
+    for j in range(2):
+        inputs = np.array([i, j])
+        print(perceptron.predict(inputs))
+
+
+# ===== training 2: OR operation =====
+print('Training data: ', training_inputs)
+labels = np.array([0, 1, 1, 1])
+
+perceptron = Perceptron(2)
+perceptron.train(training_inputs, labels)
+
+# prediction
+for i in range(2):
+    for j in range(2):
+        inputs = np.array([i, j])
+        print(perceptron.predict(inputs))
