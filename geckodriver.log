@@ -1,0 +1,81 @@
+1604907465752	geckodriver	INFO	Listening on 127.0.0.1:51989
+1604907466751	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileXLFN1V"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604907468183	Marionette	INFO	Listening on port 45011
+1604907468266	Marionette	WARN	TLS certificate errors will be ignored for this session
+1604907469288	Marionette	INFO	Stopped listening on port 45011
+1604907514366	geckodriver	INFO	Listening on 127.0.0.1:53489
+1604907514372	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilewkkz2G"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604907515807	Marionette	INFO	Listening on port 41071
+1604907515893	Marionette	WARN	TLS certificate errors will be ignored for this session
+1604907516470	Marionette	INFO	Stopped listening on port 41071
+console.warn: services.settings: main/partitioning-exempt-urls sync interrupted by shutdown
+1604907864759	geckodriver	INFO	Listening on 127.0.0.1:34085
+1604907864764	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileAuT2OV"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604907866152	Marionette	INFO	Listening on port 41659
+1604907866184	Marionette	WARN	TLS certificate errors will be ignored for this session
+1604907867444	Marionette	INFO	Stopped listening on port 41659
+1604907879771	geckodriver	INFO	Listening on 127.0.0.1:46555
+1604907879773	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilequ7n9m"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604907881184	Marionette	INFO	Listening on port 37621
+1604907881295	Marionette	WARN	TLS certificate errors will be ignored for this session
+1604907882272	Marionette	INFO	Stopped listening on port 37621
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 1031: Error: Sqlite.jsm has been shutdown. Cannot open connection to: /tmp/rust_mozprofilequ7n9m/protections.sqlite
+1604908144453	geckodriver	INFO	Listening on 127.0.0.1:37285
+1604908144457	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileTwb6J6"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604908145827	Marionette	INFO	Listening on port 44327
+1604908145878	Marionette	WARN	TLS certificate errors will be ignored for this session
+1604908163667	Marionette	INFO	Stopped listening on port 44327
+JavaScript error: , line 0: uncaught exception: undefined
+1604909871672	geckodriver	INFO	Listening on 127.0.0.1:54063
+1604909871676	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileC8a95H"
+Error: no DISPLAY environment variable specified
+1604910033343	geckodriver	INFO	Listening on 127.0.0.1:45753
+1604910033346	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilewsljql"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604910034758	Marionette	INFO	Listening on port 37933
+1604910034869	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 771 > eval line 1 > eval, line 1: WebGL warning: <Create>: getContext: Disallowing antialiased backbuffers due to blacklisting. (FEATURE_FAILURE_GLXTEST_FAILED)
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 771 > eval line 1 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 771 > eval line 1 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1604910905246	geckodriver	INFO	Listening on 127.0.0.1:58303
+1604910905251	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileD7SKhy"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604910906616	Marionette	INFO	Listening on port 44525
+1604910906672	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 5651 > eval, line 1: WebGL warning: <Create>: getContext: Disallowing antialiased backbuffers due to blacklisting. (FEATURE_FAILURE_GLXTEST_FAILED)
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 5651 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 5651 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1604910984784	geckodriver	INFO	Listening on 127.0.0.1:41993
+1604910984787	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileSndO2q"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604910986278	Marionette	INFO	Listening on port 40359
+1604910986311	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 3143 > eval, line 1: WebGL warning: <Create>: getContext: Disallowing antialiased backbuffers due to blacklisting. (FEATURE_FAILURE_GLXTEST_FAILED)
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 3143 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://pagead2.googlesyndication.com/bg/NNBFmmTfMeJXqygf8DIqtKAQbNdjHZQ4KGfsPIMPfu8.js line 1 > eval line 3143 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1604911158112	geckodriver	INFO	Listening on 127.0.0.1:53891
+1604911158117	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilevHw59M"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1604911159514	Marionette	INFO	Listening on port 37267
+1604911159543	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://pagead2.googlesyndication.com/bg/VPBp2fpJ9oTeixtDrg22IUyUn7YKp3_ulDPgKldrz3E.js line 1 > eval line 6597 > eval, line 1: WebGL warning: <Create>: getContext: Disallowing antialiased backbuffers due to blacklisting. (FEATURE_FAILURE_GLXTEST_FAILED)
+JavaScript warning: https://pagead2.googlesyndication.com/bg/VPBp2fpJ9oTeixtDrg22IUyUn7YKp3_ulDPgKldrz3E.js line 1 > eval line 6597 > eval, line 1: WebGL warning: <Create>: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://pagead2.googlesyndication.com/bg/VPBp2fpJ9oTeixtDrg22IUyUn7YKp3_ulDPgKldrz3E.js line 1 > eval line 6597 > eval, line 1: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
