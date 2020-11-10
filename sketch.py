@@ -1,6 +1,6 @@
-import numpy as np
+from tqdm import tqdm
 
-a = [1, 2]
+n = 10000
 
-print(a[1:])
-
+for i in tqdm(range(n)):
+    print(i)
