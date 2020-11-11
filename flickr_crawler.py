@@ -46,8 +46,6 @@ def _download(keyword, urls, num_url):
                 image = Image.open('./{}/{}.jpg'.format(keyword, i)) 
                 image = image.resize((256, 256), Image.ANTIALIAS)
                 image.save('./{}/{}.jpg'.format(keyword, i))
-
-                # print('{}.jpg saved'.format(i))
             except:
                 continue
 
