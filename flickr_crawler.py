@@ -26,7 +26,7 @@ def _fetch(keyword, num_url):
         if i > num_url:
             break
 
-    print (urls)
+    # print (urls)
     print('{} urls are fetched'.format(len(urls)))
 
     return urls
@@ -39,7 +39,7 @@ def _download(keyword, urls, num_url, resize):
         for i in tqdm(range(len(urls))):
             try:
                 urlretrieve(urls[i], './{}/{}.jpg'.format(keyword, i))
-                
+
                 image = Image.open('./{}/{}.jpg'.format(keyword, i)) 
                 image = image.resize((256, 256), Image.ANTIALIAS)
 
