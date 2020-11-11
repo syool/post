@@ -48,7 +48,6 @@ def _download(keyword, urls, num_url):
                 image.save('./{}/{}.jpg'.format(keyword, i))
 
                 # print('{}.jpg saved'.format(i))
-            
             except:
                 continue
 
