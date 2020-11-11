@@ -26,7 +26,7 @@ def _fetch(keyword, num_url):
         if i > num_url:
             break
 
-    # print (urls)
+    print (urls)
     print('{} urls are fetched'.format(len(urls)))
 
     return urls
@@ -35,23 +35,22 @@ def _download(keyword, urls, num_url, resize):
     os.makedirs('./{}'.format(keyword), exist_ok=True)
 
     # Download image from the url and save it as 'n.jpg'
-    for i in tqdm(range(len(urls))):
-        if urls[i] == None:
-            continue
-        else:
+    if resize == True:
+        for i in tqdm(range(len(urls))):
             try:
                 urlretrieve(urls[i], './{}/{}.jpg'.format(keyword, i))
-
-                if resize == True:
-                    # Resize the image and overwrite it
-                    image = Image.open('./{}/{}.jpg'.format(keyword, i)) 
-                    image = image.resize((256, 256), Image.ANTIALIAS)
-                else:
-                    image = Image.open('./{}/{}.jpg'.format(keyword, i)) 
+                
+                image = Image.open('./{}/{}.jpg'.format(keyword, i)) 
+                image = image.resize((256, 256), Image.ANTIALIAS)
 
                 image.save('./{}/{}.jpg'.format(keyword, i))
-            except:
-                continue
+            except: continue
+    else:
+        for i in tqdm(range(len(urls))):
+            try:
+                urlretrieve(urls[i], './{}/{}.jpg'.format(keyword, i))
+                image.save('./{}/{}.jpg'.format(keyword, i))
+            except: continue
 
 def run(keyword, num_url, resize):
     urls = _fetch(keyword, num_url)
