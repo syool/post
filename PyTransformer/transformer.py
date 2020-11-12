@@ -2,6 +2,7 @@
 ''' ==== attention is all you need, 2017 ==== '''
 
 # source codes from https://blog.floydhub.com/the-transformer-in-pytorch/
+# github: https://github.com/SamLynnEvans/Transformer
 
 import torch
 import torch.nn as nn
@@ -26,10 +27,11 @@ class Embedder(nn.Module):
 # === module 2. positional encoding ===
 
 class PositionalEncoder(nn.Module):
-    def __init__(self, d_model, max_seq_len=80):
+    def __init__(self, d_model, max_seq_len=80, dropout=0.1):
         super().__init__()
 
         self.d_model = d_model
+        self.dropout = nn.Dropout(dropout)
 
         pos_enc = torch.zeros(max_seq_len, d_model)
         for pos in range(max_seq_len):
@@ -216,13 +218,13 @@ def get_clones(module, N):
 # === encoder - decoder ===
 
 class Encoder(nn.Module):
-    def __init__(self, vocab_size, d_model, N, heads):
+    def __init__(self, vocab_size, d_model, N, heads, dropout):
         super().__init__()
 
         self.N = N
         self.embed = Embedder(vocab_size, d_model)
-        self.pos_enc = PositionalEncoder(d_model)
-        self.layers = get_clones(EncoderLayer(d_model, heads), N)
+        self.pos_enc = PositionalEncoder(d_model, dropout=dropout)
+        self.layers = get_clones(EncoderLayer(d_model, heads, dropout), N)
         self.norm = Norm(d_model)
 
     def forward(self, src, mask):
@@ -237,13 +239,13 @@ class Encoder(nn.Module):
 
 
 class Decoder(nn.Module):
-    def __init__(self, vocab_size, d_model, N, heads):
+    def __init__(self, vocab_size, d_model, N, heads, dropout):
         super().__init__()
 
         self.N = N
         self.embed = Embedder(vocab_size, d_model)
-        self.pos_enc = PositionalEncoder(d_model)
-        self.layers = get_clones(DecoderLayer(d_model, heads), N)
+        self.pos_enc = PositionalEncoder(d_model, dropout=dropout)
+        self.layers = get_clones(DecoderLayer(d_model, heads, dropout), N)
         self.norm = Norm(d_model)
 
     def forward(self, trg, e_outputs, src_mask, trg_mask):
@@ -259,11 +261,11 @@ class Decoder(nn.Module):
 # === transformer ===
 
 class Transformer(nn.Module):
-    def __init__(self, src_vocab, trg_vocab, d_model, N, heads=6):
+    def __init__(self, src_vocab, trg_vocab, d_model, N, heads, dropout):
         super().__init__()
 
-        self.encoder = Encoder(src_vocab, d_model, N, heads)
-        self.decoder = Decoder(trg_vocab, d_model, N, heads)
+        self.encoder = Encoder(src_vocab, d_model, N, heads, dropout)
+        self.decoder = Decoder(trg_vocab, d_model, N, heads, dropout)
         self.out = nn.Linear(d_model, trg_vocab)
 
     def forward(self, src, trg, src_mask, trg_mask):
@@ -272,3 +274,25 @@ class Transformer(nn.Module):
         output = self.out(d_outputs)
 
         return output
+
+# === model loader ===
+
+def get_model(opt, src_vocab, trg_vocab):
+    
+    assert opt.d_model % opt.heads == 0
+    assert opt.dropout < 1
+
+    model = Transformer(src_vocab, trg_vocab, opt.d_model, opt.n_layers, opt.heads, opt.dropout)
+       
+    if opt.load_weights is not None:
+        print("loading pretrained weights...")
+        model.load_state_dict(torch.load(f'{opt.load_weights}/model_weights'))
+    else:
+        for p in model.parameters():
+            if p.dim() > 1:
+                nn.init.xavier_uniform_(p) 
+    
+    if opt.device == 0:
+        model = model.cuda()
+    
+    return model
