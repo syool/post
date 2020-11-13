@@ -1,7 +1,7 @@
 import spacy
 import re
 
-class Tokenize(object):
+class tokenize(object):
     
     def __init__(self, lang):
         self.nlp = spacy.load(lang)

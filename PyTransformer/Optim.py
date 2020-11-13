@@ -5,15 +5,20 @@ import numpy as np
 class CosineWithRestarts(torch.optim.lr_scheduler._LRScheduler):
     """
     Cosine annealing with restarts.
+
     Parameters
     ----------
     optimizer : torch.optim.Optimizer
+
     T_max : int
         The maximum number of iterations within the first cycle.
+
     eta_min : float, optional (default: 0)
         The minimum learning rate.
+
     last_epoch : int, optional (default: -1)
         The index of the last epoch.
+
     """
 
     def __init__(self,

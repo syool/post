@@ -1,8 +1,8 @@
 import pandas as pd
 import torchtext
 from torchtext import data
-from tokenizer import Tokenize
-from batch import MyIterator, batch_size_fn
+from Tokenize import tokenize
+from Preprocess import MyIterator, batch_size_fn
 import os
 import dill as pickle
 
@@ -32,8 +32,8 @@ def create_fields(opt):
     
     print("loading spacy tokenizers...")
     
-    t_src = Tokenize(opt.src_lang)
-    t_trg = Tokenize(opt.trg_lang)
+    t_src = tokenize(opt.src_lang)
+    t_trg = tokenize(opt.trg_lang)
 
     TRG = data.Field(lower=True, tokenize=t_trg.tokenizer, init_token='<sos>', eos_token='<eos>')
     SRC = data.Field(lower=True, tokenize=t_src.tokenizer)
