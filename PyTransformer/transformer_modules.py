@@ -1,3 +1,8 @@
+''' ============== transformer ============== '''
+''' ==== attention is all you need, 2017 ==== '''
+
+# source codes from https://github.com/SamLynnEvans/Transformer
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

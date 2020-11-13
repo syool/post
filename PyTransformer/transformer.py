@@ -1,3 +1,6 @@
+''' ============== transformer ============== '''
+''' ==== attention is all you need, 2017 ==== '''
+
 import torch
 import torch.nn as nn
 
