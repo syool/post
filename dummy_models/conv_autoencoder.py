@@ -10,12 +10,17 @@ from torchvision import datasets, transforms
 
 import matplotlib.pyplot as plt
 
+import os
+os.chdir('/home/user/Downloads')
+
 # converting data to torch.FloatTensor
 transform = transforms.ToTensor()
 
 # download the training and test datasets
-train_data = datasets.CIFAR10(root='/home/austin/Documents/Datasets/CIFAR10', train=True, download=False, transform=transform)
-test_data = datasets.CIFAR10(root='/home/austin/Documents/Datasets/CIFAR10', train=False, download=False, transform=transform)
+train_data = datasets.CIFAR10(root='./CIFAR10',
+                              train=True, download=True, transform=transform)
+test_data = datasets.CIFAR10(root='./CIFAR10',
+                             train=False, download=True, transform=transform)
 
 batch_size = 32
 
@@ -30,7 +35,8 @@ def imshow(img):
     plt.imshow(np.transpose(img, (1, 2, 0))) 
 
 # define the image classes
-classes = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+classes = ['airplane', 'automobile', 'bird', 'cat', 'deer',
+           'dog', 'frog', 'horse', 'ship', 'truck']
 
 # obtain one batch of training images
 dataiter = iter(train_loader)
@@ -68,7 +74,7 @@ class ConvAutoencoder(nn.Module):
         x = torch.relu(self.conv2(x))
         x = self.pool(x)
         x = torch.relu(self.t_conv1(x))
-        x = torch.sigmoid(self.t_conv2(x))
+        x = torch.sigmoid(self.t_conv2(x)) # layer for BCE loss
               
         return x
 
